@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PirateJam/MattExample.unity
+    guid: 00ec6d839d2260c46a85b3b627f90afa
   m_configObjects: {}
