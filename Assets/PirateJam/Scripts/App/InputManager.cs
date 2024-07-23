@@ -78,7 +78,7 @@ namespace PirateJam.Scripts.App
             {
                 SwapInputMaps(initalMap);
             }
-            
+
         }
 
         private void CheckInputType(InputAction.CallbackContext ctx)
