@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PirateJam/LiTest3D.unity
+    guid: 679fa3ec6087cec4cbb443ce7d176e2d
   m_configObjects: {}

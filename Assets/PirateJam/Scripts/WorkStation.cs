@@ -48,9 +48,13 @@ namespace PirateJam.Scripts
 
         public virtual void Close()
         {
-            InputManager.Instance.SwapInputMaps("BasicMove");
+            GameManager.Instance.SwapGameState(GameManager.GameState.Move);
             
             screen.SetActive(false);
+            
+            //TODO: Store Score
+            
+            //TODO: evaluate if it goes to the next level
 
         }
     }

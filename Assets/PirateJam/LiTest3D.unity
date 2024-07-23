@@ -257,9 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947af6bff6608614296afdf7138131df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuCam: {fileID: 0}
-  MoveCam: {fileID: 0}
-  WorkStation0: {fileID: 0}
+  MenuCam: {fileID: 644256657}
+  MoveCam: {fileID: 513051142}
+  WorkStation0: {fileID: 338219902}
   WorkStation1: {fileID: 0}
   WorkStation2: {fileID: 0}
   WorkStation3: {fileID: 0}
