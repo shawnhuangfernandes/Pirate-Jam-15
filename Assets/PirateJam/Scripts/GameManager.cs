@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cinemachine;
 using PirateJam.Scripts.App;
 using UnityEditor;
@@ -8,15 +9,19 @@ namespace PirateJam.Scripts
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] private CinemachineVirtualCamera MenuCam;
+        [Header("SceneReferences"),Space ]
+        
+        [ Header("Cameras"),SerializeField] private CinemachineVirtualCamera MenuCam;
 
         [SerializeField] private CinemachineVirtualCamera MoveCam;
 
-        [Header("Cameras"), SerializeField] private CinemachineVirtualCamera WorkStation0;
+        [Space,SerializeField] private CinemachineVirtualCamera WorkStation0;
         [SerializeField] private CinemachineVirtualCamera WorkStation1;
         [SerializeField] private CinemachineVirtualCamera WorkStation2;
         [SerializeField] private CinemachineVirtualCamera WorkStation3;
 
+        [Header("Objects")] private CharacterManager player;
+        
 
         public enum GameState
         {
@@ -26,7 +31,8 @@ namespace PirateJam.Scripts
             Pause
         }
 
-        [SerializeField] private GameState currentState;
+        [Header("Stats"),SerializeField] private GameState currentState;
+        [ShowOnly] public List<WorkStation> workStations;
 
         private GameObject currentCamera;
 
@@ -62,12 +68,14 @@ namespace PirateJam.Scripts
                     break;
                 case GameState.Move:
                     InputManager.Instance.SwapInputMaps("BasicMove");
+                    CharacterManager.Instance.AppearPlayer();
                     currentCamera.SetActive(false);
                     currentCamera = MoveCam.gameObject;
                     currentCamera.SetActive(true);
                     break;
                 case GameState.WorkStation:
                     InputManager.Instance.SwapInputMaps("Workstation");
+                    CharacterManager.Instance.DisappearPlayer();
                     currentCamera.SetActive(false);
                     currentCamera = workstation switch
                     {
@@ -94,5 +102,7 @@ namespace PirateJam.Scripts
         void Update()
         {
         }
+        
+        
     }
 }

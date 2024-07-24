@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PirateJam.Scripts
 {
-    public class MentorReaction : MonoBehaviour
+    public class MentorReaction : Singleton<MentorReaction>
     {
         // Start is called before the first frame update
         void Start()

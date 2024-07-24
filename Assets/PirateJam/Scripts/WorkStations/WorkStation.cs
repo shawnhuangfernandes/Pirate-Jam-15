@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PirateJam.Scripts.App;
 using UnityEngine;
@@ -9,20 +10,31 @@ namespace PirateJam.Scripts
     {
         [SerializeField] protected GameObject screen;
         [SerializeField,Range(0,3)] protected int WorkStationNumber;
-        
-        //To be ignored until stretch goals
+
+        [SerializeField, ShowOnly] protected int currentLevel;
         [field: SerializeField] public int Level { get; protected set; }
 
         [SerializeField] protected MentorReaction mentor;
         
-        public struct Grade
+        public class Grade
         {
             public string Cause;
             public int Value;
+
+            public Grade(string cause, int value)
+            {
+                Cause = cause;
+                Value = value;
+            }
         }
 
         [SerializeField] private List<Grade> _demerits = new();
         [SerializeField] private List<Grade> _achievements = new();
+
+        private void Start()
+        {
+           GameManager.Instance.workStations.Add(this);
+        }
 
         public int Score { get; protected set; }
         public virtual void Open()
@@ -57,6 +69,11 @@ namespace PirateJam.Scripts
             //TODO: list demerits
             
             //TODO: publish score
+        }
+
+        public virtual bool IsDone()
+        {
+            return currentLevel >= Level;
         }
 
         public virtual void Close()
