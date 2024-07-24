@@ -10,15 +10,20 @@ namespace PirateJam.Scripts
         [SerializeField] protected GameObject screen;
         [SerializeField,Range(0,3)] protected int WorkStationNumber;
         
+        //To be ignored until stretch goals
         [field: SerializeField] public int Level { get; protected set; }
+
+        [SerializeField] protected MentorReaction mentor;
         
-        public struct Demerit
+        public struct Grade
         {
             public string Cause;
             public int Value;
         }
 
-        [SerializeField] private List<Demerit> _demerits = new();
+        [SerializeField] private List<Grade> _demerits = new();
+        [SerializeField] private List<Grade> _achievements = new();
+
         public int Score { get; protected set; }
         public virtual void Open()
         {
@@ -29,13 +34,21 @@ namespace PirateJam.Scripts
             screen.SetActive(true);
             
             _demerits.Clear();
+            _achievements.Clear();
         }
         
-        public virtual int AddDemerit(Demerit demerit)
+        public virtual int AddDemerit(Grade demerit)
         {
             _demerits.Add(demerit);
             
             Score -= demerit.Value;
+            return Score;
+        }
+
+        public virtual int AddAchievement(Grade achievement)
+        {
+            _achievements.Add(achievement);
+            Score += achievement.Value;
             return Score;
         }
 
