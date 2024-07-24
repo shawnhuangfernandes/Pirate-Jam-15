@@ -13,12 +13,14 @@ public class FiringPattern : ScriptableObject
     {
         foreach(LaunchableObject launchable in launchables)
         {
-            Rigidbody launchableRb2d = Instantiate(launchable.prefab, spawnPosition, Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody launchableRb2d = Instantiate(launchable.prefab, spawnPosition, Quaternion.Euler(0F, 0F, -90F)).GetComponent<Rigidbody>();
             Vector3 directionToMove = Quaternion.AngleAxis(launchable.launchAngle, Vector3.right) * Vector3.up;
 
             launchableRb2d.velocity = directionToMove * launchable.speed;
         }
     }
+
+    public List<LaunchableObject> GetLaunchables() => launchables;
 }
 
 [Serializable]

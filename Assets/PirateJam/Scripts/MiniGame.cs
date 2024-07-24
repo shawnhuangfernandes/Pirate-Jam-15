@@ -18,9 +18,7 @@ public abstract class MiniGame : MonoBehaviour
     [Tooltip("The camera that provides the player view while in the minigame")]
     [SerializeField] private CinemachineVirtualCamera miniGameCam;
 
-
-
-
+    protected const float MINI_GAME_END_PADDING_TIME = 3F;
 
     private int demeritsEarned = 0;
     private int skillChecks = 0;
@@ -57,19 +55,20 @@ public abstract class MiniGame : MonoBehaviour
     public virtual void MinigameEnd()
     {
         miniGameCam.Priority = 0;
+
     }
 
     // Runs the visual/audio gameplay logic for a skill check
     public abstract void TriggerSkillCheck();
 
 
-    protected void EarnDemerit()
+    public void OnDemeritEarned()
     {
         demeritsEarned++;
         GameManager.Instance.IncrementDemerit();
     }
 
-    protected void SkillCheckCount()
+    public void OnSkillCheckTriggered()
     {
         skillChecks++;
         GameManager.Instance.IncrementSkillCheck();
