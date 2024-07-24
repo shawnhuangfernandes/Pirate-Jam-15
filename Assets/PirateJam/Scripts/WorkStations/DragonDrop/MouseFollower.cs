@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /*
@@ -8,54 +9,40 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
 {
     public class MouseFollower : MonoBehaviour
     {
-        [Tooltip("Whether to constrain on the X")]
-        [SerializeField] private bool constrainOnX;
-
-        [Tooltip("Whether to constrain on the Y")]
-        [SerializeField] private bool constrainOnY;
-
-        [Tooltip("Whether to constrain on the Z")]
-        [SerializeField] private bool constrainOnZ;
-
-        [Tooltip("Limitation on X coordinate (not used if constrained on X")]
-        [SerializeField] private Vector2 xConstraintsMinMax;
-
-        [Tooltip("Limitation on Y coordinate (not used if constrained on Y")]
-        [SerializeField] private Vector2 yConstraintsMinMax;
-
-        [Tooltip("Limitation on Z coordinate (not used if constrained on Z")]
-        [SerializeField] private Vector2 zConstraintsMinMax;
 
         [Tooltip("The layers this object will view as a trackable surface")]
         [SerializeField] private LayerMask layerMask;
 
-        private bool isFollowingMouse = false;
+        private bool _isFollowingMouse = false;
 
-        Vector3 objectFollowPos;
+        private Vector3 _objectFollowPos;
+
+        private Camera _mainCamera;
+
+        private void Start()
+        {
+            _mainCamera = Camera.main;
+        }
 
         private void Update()
         {
-            if (isFollowingMouse == false) return;
+            if (_isFollowingMouse == false) return;
 
             GetMousePosition();
         }
 
-        public void GetMousePosition()
+        private void GetMousePosition()
         {   
-            Ray mousePosRay = Camera.main.ScreenPointToRay(Input.mousePosition);        
+            var mousePosRay = _mainCamera.ScreenPointToRay(Input.mousePosition);        
 
-            if (Physics.Raycast(mousePosRay, out RaycastHit hitInfo, Mathf.Infinity, layerMask)) 
+            if (Physics.Raycast(mousePosRay, out var hitInfo, Mathf.Infinity, layerMask)) 
             {
-                objectFollowPos = hitInfo.point;
+                _objectFollowPos = hitInfo.point;
             }
 
-            float xPos = constrainOnX ? Mathf.Clamp(objectFollowPos.x, xConstraintsMinMax[0], xConstraintsMinMax[1]) : objectFollowPos.x;
-            float yPos = constrainOnY ? Mathf.Clamp(objectFollowPos.y, yConstraintsMinMax[0], yConstraintsMinMax[1]) : objectFollowPos.y;
-            float zPos = constrainOnZ ? Mathf.Clamp(objectFollowPos.z, zConstraintsMinMax[0], zConstraintsMinMax[1]) : objectFollowPos.z;
-
-            transform.position = new Vector3(xPos, yPos, zPos);
+            transform.position = _objectFollowPos;
         }
 
-        public void SetFollow(bool shouldFollow) => isFollowingMouse = shouldFollow;   
+        public void SetFollow(bool shouldFollow) => _isFollowingMouse = shouldFollow;   
     }
 }

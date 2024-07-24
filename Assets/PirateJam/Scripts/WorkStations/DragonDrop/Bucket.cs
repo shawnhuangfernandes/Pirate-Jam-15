@@ -18,6 +18,13 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
 
                 Destroy(other.gameObject);
             }
+            
+            else if (other.TryGetComponent(out DragonSpit spitball))
+            {
+                game.AddAchievement(new WorkStation.Grade("spit caught", 1));
+
+                Destroy(other.gameObject);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace PirateJam.Scripts.WorkStations.DragonDrop
@@ -14,8 +15,13 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         {
             foreach(LaunchableObject launchable in launchables)
             {
-               var launch = Instantiate(launchable.prefab, origin.position, Quaternion.AngleAxis(launchable.launchAngle, origin.right));
+                var dir = Quaternion.AngleAxis(launchable.launchAngle, origin.forward);
+                
+               var launch = Instantiate(launchable.prefab, origin.position, origin.rotation, origin);
                var launchableRb = launch.GetComponent<Rigidbody>(); 
+               
+              launch.transform.Rotate(origin.up,90f);
+              launch.transform.Rotate(origin.right,launchable.launchAngle);
                
                launchableRb.velocity = launch.transform.forward * launchable.speed;
             }
