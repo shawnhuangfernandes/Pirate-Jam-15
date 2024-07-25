@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PirateJam/MainScene.unity
+    guid: 3bc26104a25cfc84bb745e566dfae9f7
   m_configObjects: {}

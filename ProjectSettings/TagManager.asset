@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Mouse
   - 
   - 
   - 
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1446315313
+    locked: 0
+  - name: Player
+    uniqueID: 3440964461
+    locked: 0
+  - name: Midground
+    uniqueID: 1014881795
+    locked: 0
+  - name: Foreground
+    uniqueID: 2390579135
     locked: 0
