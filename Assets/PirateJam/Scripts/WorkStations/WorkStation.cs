@@ -1,21 +1,19 @@
-using System;
 using System.Collections.Generic;
-using PirateJam.Scripts.App;
+using PirateJam.Scripts.ActionList;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace PirateJam.Scripts
+namespace PirateJam.Scripts.WorkStations
 {
     public abstract class WorkStation : MonoBehaviour
     {
         [SerializeField] protected GameObject screen;
-        [SerializeField,Range(0,3)] protected int WorkStationNumber;
+        [SerializeField, Range(0, 3)] protected int WorkStationNumber;
 
         [SerializeField, ShowOnly] protected int currentLevel;
         [field: SerializeField] public int Level { get; protected set; }
 
         [SerializeField] protected MentorReaction mentor;
-        
+
         public class Grade
         {
             public string Cause;
@@ -33,26 +31,32 @@ namespace PirateJam.Scripts
 
         private void Start()
         {
-           GameManager.Instance.workStations.Add(this);
+            GameManager.Instance.workStations.Add(this);
         }
 
-        public int Score { get; protected set; }
+        public int Score { get; protected set; } = 100;
+
         public virtual void Open()
         {
             //Swap State
             GameManager.Instance.SwapGameState(GameManager.GameState.WorkStation, WorkStationNumber);
-            
+
             //Open scene
             screen.SetActive(true);
-            
+
             _demerits.Clear();
             _achievements.Clear();
+            mentor.Appear();
+
+            Score = 100;
         }
-        
+
         public virtual int AddDemerit(Grade demerit)
         {
             _demerits.Add(demerit);
-            
+
+            mentor.Scold();
+
             Score -= demerit.Value;
             return Score;
         }
@@ -61,14 +65,19 @@ namespace PirateJam.Scripts
         {
             _achievements.Add(achievement);
             Score += achievement.Value;
+
+            mentor.Approve();
+
             return Score;
         }
 
         public virtual void Evaluate()
         {
-            //TODO: list demerits
+            Debug.Log("Score: " + Score/100f);
             
-            //TODO: publish score
+            ActionList.ActionList.Instance.AddAction(new DelegateAction<float>(true, mentor.GiveGrade, Score / 100f, 1,
+                0.5f));
+            ActionList.ActionList.Instance.AddAction(new DelegateAction(false, Close, 1, 3f));
         }
 
         public virtual bool IsDone()
@@ -79,12 +88,13 @@ namespace PirateJam.Scripts
         public virtual void Close()
         {
             GameManager.Instance.SwapGameState(GameManager.GameState.Move);
-            
+
             screen.SetActive(false);
+
+            if (Score / 100f > .70 && currentLevel <= Level)
+                ++currentLevel;
             
-            //TODO: Store Score
-            
-            //TODO: evaluate if it goes to the next level
+            GameManager.Instance.GameComplete();
 
         }
     }

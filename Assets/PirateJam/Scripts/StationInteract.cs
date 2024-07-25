@@ -1,4 +1,5 @@
 using PirateJam.Scripts.App;
+using PirateJam.Scripts.WorkStations;
 using UnityEngine;
 
 namespace PirateJam.Scripts

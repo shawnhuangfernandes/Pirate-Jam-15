@@ -1,5 +1,6 @@
 using System;
 using PirateJam.Scripts.App;
+using PirateJam.Scripts.WorkStations;
 using UnityEngine.PlayerLoop;
 
 namespace PirateJam.Scripts

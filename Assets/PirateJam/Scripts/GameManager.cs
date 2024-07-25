@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Cinemachine;
 using PirateJam.Scripts.App;
+using PirateJam.Scripts.WorkStations;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace PirateJam.Scripts
         [SerializeField] private CinemachineVirtualCamera WorkStation2;
         [SerializeField] private CinemachineVirtualCamera WorkStation3;
 
-        [Header("Objects")] private CharacterManager player;
+        [Header("Objects")] [SerializeField] private GameObject TEMPwinscreen;
         
 
         public enum GameState
@@ -101,6 +102,21 @@ namespace PirateJam.Scripts
         // Update is called once per frame
         void Update()
         {
+        }
+
+        public bool GameComplete()
+        {
+            foreach (var station in workStations)
+            {
+                if (!station.IsDone()) return false;
+            }
+            
+            //TODO: GAME COMPLETE SEQUENCE
+
+            Debug.Log("GAME COMPLETE!");
+            TEMPwinscreen.SetActive(true);
+            SwapGameState(GameState.Pause);
+            return true;
         }
         
         
