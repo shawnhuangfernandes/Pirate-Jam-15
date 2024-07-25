@@ -15,5 +15,10 @@ public class Bucket : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+
+        if (other.TryGetComponent(out DragonSpit dragonSpit))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
