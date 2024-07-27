@@ -38,7 +38,7 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         [Tooltip("The speed of the object when launched")]
         public float speed;
 
-        [Tooltip("The angle of launch, where 0 is up, and 90 is right")]
+        [Tooltip("The angle of launch, where 0 is left, and 90 is up")]
         public float launchAngle;
     }
 }
