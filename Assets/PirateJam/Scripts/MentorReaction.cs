@@ -1,19 +1,20 @@
 using PirateJam.Scripts.ActionList;
 using TMPro;
 using UnityEngine;
+using Yarn.Unity;
 
 namespace PirateJam.Scripts
 {
     public class MentorReaction : Singleton<MentorReaction>
     {
-        [SerializeField] private TMP_Text _bubbleText;
-        [SerializeField] private GameObject _talkBubble;
-
         [SerializeField] private GameObject visuals;
 
+        private InMemoryVariableStorage _storage;
+        
         // Start is called before the first frame update
         void Start()
         {
+            
         }
 
         // Update is called once per frame
@@ -35,7 +36,7 @@ namespace PirateJam.Scripts
         public void Disappear()
         {
             visuals.SetActive(false);
-            _talkBubble.SetActive(false);
+            
         }
 
         /// <summary>
@@ -44,7 +45,6 @@ namespace PirateJam.Scripts
         /// <param name="grade"></param>
         public void GiveGrade(float grade)
         {
-            _talkBubble.SetActive(true);
             var feedback = grade switch
             {
                 >= .99f => "A+",
@@ -61,8 +61,10 @@ namespace PirateJam.Scripts
                 >= .6f => "D-",
                 _ => "F"
             };
+            
 
-            _bubbleText.text = feedback;
+            GameManager.Instance.VariableStorage.SetValue("$grade", feedback);
+
 
             ActionList.ActionList.Instance.AddAction(new DelegateAction(false, Disappear, 1, 2.5f));
         }

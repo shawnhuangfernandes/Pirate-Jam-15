@@ -161,18 +161,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4564746798223987336}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalRotation: {x: 0, y: 0.25704846, z: 0, w: 0.96639854}
+  m_LocalPosition: {x: 0, y: 0, z: 4.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4564746798739309811}
   m_Father: {fileID: 4564746799411839044}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 29.79, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -7.5, y: 3.01}
+  m_AnchoredPosition: {x: -4.9, y: 2.02}
   m_SizeDelta: {x: 12.674, y: 9.8822}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4564746798223987380
@@ -330,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4564746799400936057
 Transform:
   m_ObjectHideFlags: 0
@@ -406,6 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4564746799411839044}
   - component: {fileID: 4564746799411839047}
+  - component: {fileID: 1348437248}
   m_Layer: 0
   m_Name: --ScoreMentor--
   m_TagString: Untagged
@@ -442,6 +443,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99871b203065a8f4da2ba60bb31bde04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bubbleText: {fileID: 4564746797674149146}
-  _talkBubble: {fileID: 4564746798223987336}
   visuals: {fileID: 4564746799400936062}
+--- !u!114 &1348437248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4564746799411839045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94f9d9f6e80f984f94976b04551b1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: MentorWS0
+  messageBubbleOffset: {x: 0, y: 3, z: 0}
+  offsetUsesRotation: 0
