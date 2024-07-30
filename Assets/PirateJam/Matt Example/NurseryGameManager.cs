@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using FMODUnity;
-using PirateJam.Scripts.WorkStations;
-using TMPro;
 using UnityEngine;
 
-public class NurseryGameManager : WorkStation
+public class NurseryGameManager : MonoBehaviour
 {
     public int TotalCreatures = 15;
     public float SpawnMargin = 0.1f;
@@ -29,39 +26,17 @@ public class NurseryGameManager : WorkStation
     private Plane FoodPlane;
     private Bounds PlayAreaBounds;
     private GameObject HungryParticles;
-   [SerializeField,ShowOnly] private int RemainingFood;
+    private int RemainingFood;
 
-   [SerializeField] private TMP_Text FoodText, QueueText;
-
-    private bool isOpen = false;
-
-    [Header("SFX"), SerializeField] private FMODUnity.EventReference animalNoiseStart;
-    [SerializeField] private FMODUnity.EventReference animalNoiseStop;
-    [SerializeField] private FMODUnity.EventReference animalNoise;
-    [SerializeField] private FMODUnity.EventReference animalRight;
-    [SerializeField] private FMODUnity.EventReference animalWrong;
-
-
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-
         PlayAreaBounds = PlayArea.GetComponent<Collider>().bounds;
         FoodPlane = new Plane(Vector3.up, new Vector3(0, PlayArea.position.y + FoodHeight, 0));
-    }
-
-    public override void Open()
-    {
-        base.Open();
-        isOpen = true;
-        RuntimeManager.PlayOneShot(animalNoiseStart);
         StartCoroutine(SpawnCreaturesSequentially());
     }
 
     private void Update()
     {
-        if (!isOpen) return;
-
         HandleFoodInteraction();
         UpdateParticleSystemPosition();
     }
@@ -87,7 +62,7 @@ public class NurseryGameManager : WorkStation
             yield return new WaitForSeconds(0.1f);
         }
 
-        RemainingFood = TotalCreatures +3;
+        RemainingFood = TotalCreatures;
         GenerateFeedingQueue();
     }
 
@@ -97,8 +72,9 @@ public class NurseryGameManager : WorkStation
         for (int i = 0; i < shuffledCreatures.Count; i++)
         {
             int randomIndex = Random.Range(i, shuffledCreatures.Count);
-            (shuffledCreatures[i], shuffledCreatures[randomIndex]) =
-                (shuffledCreatures[randomIndex], shuffledCreatures[i]);
+            CreatureController temp = shuffledCreatures[i];
+            shuffledCreatures[i] = shuffledCreatures[randomIndex];
+            shuffledCreatures[randomIndex] = temp;
         }
 
         foreach (CreatureController creature in shuffledCreatures)
@@ -114,19 +90,18 @@ public class NurseryGameManager : WorkStation
         if (FeedingQueue.Count > 0)
         {
             CreatureController currentCreature = FeedingQueue.Peek();
-            HungryParticles = Instantiate(ParticleSystemPrefab, currentCreature.transform.position, Quaternion.identity,
-                currentCreature.transform);
-            if (RemainingFood <= 0)
-            {
-                Evaluate();
-            }
+            HungryParticles = Instantiate(ParticleSystemPrefab, currentCreature.transform.position, Quaternion.identity, currentCreature.transform);
         }
         else
         {
             Debug.Log("All creatures have been fed!");
-            // Add any game completion logic here
-            Evaluate();
+            GameComplete();
         }
+    }
+
+    private void GameComplete()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void UpdateParticleSystemPosition()
@@ -215,15 +190,13 @@ public class NurseryGameManager : WorkStation
         if (ActiveIndicator != null && ActiveFoods.Count > 0)
         {
             RaycastHit hit;
-            if (Physics.Raycast(ActiveFoods[ActiveFoods.Count - 1].transform.position, Vector3.down, out hit,
-                    MaxRaycastDistance))
+            if (Physics.Raycast(ActiveFoods[ActiveFoods.Count - 1].transform.position, Vector3.down, out hit, MaxRaycastDistance))
             {
                 if (hit.collider.GetComponent<CreatureController>() == null)
                     ActiveIndicator.transform.position = hit.point;
                 else
                 {
-                    RaycastHit[] hits = Physics.RaycastAll(ActiveFoods[ActiveFoods.Count - 1].transform.position,
-                        Vector3.down, MaxRaycastDistance);
+                    RaycastHit[] hits = Physics.RaycastAll(ActiveFoods[ActiveFoods.Count - 1].transform.position, Vector3.down, MaxRaycastDistance);
                     foreach (RaycastHit h in hits)
                     {
                         if (h.collider.GetComponent<CreatureController>() == null)
@@ -236,16 +209,9 @@ public class NurseryGameManager : WorkStation
             }
             else
             {
-                ActiveIndicator.transform.position = ActiveFoods[ActiveFoods.Count - 1].transform.position +
-                                                     Vector3.down * MaxRaycastDistance;
+                ActiveIndicator.transform.position = ActiveFoods[ActiveFoods.Count - 1].transform.position + Vector3.down * MaxRaycastDistance;
             }
         }
-    }
-
-    private void UpdateHUD()
-    {
-        FoodText.text = RemainingFood.ToString();
-        QueueText.text = FeedingQueue.Count.ToString();
     }
 
     private Vector3 GetFoodPositionFromMouse()
@@ -292,7 +258,6 @@ public class NurseryGameManager : WorkStation
         {
             OnIncorrectCreatureFed(creature);
         }
-        UpdateHUD();
     }
 
     public void OnCorrectCreatureFed(CreatureController creature)
@@ -302,16 +267,14 @@ public class NurseryGameManager : WorkStation
             FeedingQueue.Dequeue();
             CreatureList.Remove(creature);
             Destroy(HungryParticles);
-            AddAchievement(new Grade("Fed correct pet", 10));
-            RuntimeManager.PlayOneShot(animalRight);
+            Merit();
             SpawnParticleSystem();
         }
     }
 
     public void OnIncorrectCreatureFed(CreatureController creature)
     {
-        AddDemerit(new Grade("Incorrect food for pet", 10));
-        RuntimeManager.PlayOneShot(animalWrong);
+        Demerit();
 
         if (FeedingQueue.Count > 0 && HungryParticles != null && HungryParticles.transform.parent == creature.transform)
         {
@@ -320,14 +283,15 @@ public class NurseryGameManager : WorkStation
         }
     }
 
-    public override void Evaluate()
+    private void Merit()
     {
-        base.Evaluate();
+        Debug.Log("MERIT - Correct creature fed");
+        // Add any additional merit logic here
     }
 
-    public override void Close()
+    private void Demerit()
     {
-        base.Close();
-        RuntimeManager.PlayOneShot(animalNoiseStop);
+        Debug.Log("DEMERIT - Incorrect creature fed");
+        // Add any additional demerit logic here
     }
 }

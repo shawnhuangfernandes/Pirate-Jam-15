@@ -266,6 +266,27 @@ MonoBehaviour:
   TEMPwinscreen: {fileID: 0}
   runner: {fileID: 0}
   VariableStorage: {fileID: 0}
+  musicEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  ambienceEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  menuEndEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   currentState: 0
   workStations: []
 --- !u!4 &97430021
@@ -2234,6 +2255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 454448588}
     m_Modifications:
+    - target: {fileID: 514236693424579026, guid: e09418ac85d211f478a387d85588902c, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 596367057}
     - target: {fileID: 8062115468203131723, guid: e09418ac85d211f478a387d85588902c, type: 3}
       propertyPath: m_Name
       value: --NurseryWorkstation--
@@ -2282,9 +2307,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8062115469065970515, guid: e09418ac85d211f478a387d85588902c, type: 3}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 596367057}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e09418ac85d211f478a387d85588902c, type: 3}
