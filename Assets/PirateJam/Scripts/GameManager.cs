@@ -5,6 +5,7 @@ using PirateJam.Scripts.App;
 using PirateJam.Scripts.WorkStations;
 using UnityEditor;
 using UnityEngine;
+using Yarn.Unity;
 
 namespace PirateJam.Scripts
 {
@@ -22,7 +23,9 @@ namespace PirateJam.Scripts
         [SerializeField] private CinemachineVirtualCamera WorkStation3;
 
         [Header("Objects")] [SerializeField] private GameObject TEMPwinscreen;
-        
+        [SerializeField] private DialogueRunner runner;
+
+        public InMemoryVariableStorage VariableStorage;
 
         public enum GameState
         {
@@ -41,6 +44,7 @@ namespace PirateJam.Scripts
         public void Start()
         {
             Initialize();
+            VariableStorage = runner.gameObject.GetComponent<InMemoryVariableStorage>();
         }
         
         public void Initialize()
@@ -52,6 +56,7 @@ namespace PirateJam.Scripts
         public void MenuStartPlay()
         {
             SwapGameState(GameState.Move);
+            RunExposition();
         }
 
 
@@ -118,7 +123,17 @@ namespace PirateJam.Scripts
             SwapGameState(GameState.Pause);
             return true;
         }
+
+        public void RunQuip(string node)
+        {
+            runner.StartDialogue(node);
+        }
+
+        public void RunExposition()
+        {
+            runner.StartDialogue("Start");
+        }
         
-        
+
     }
 }

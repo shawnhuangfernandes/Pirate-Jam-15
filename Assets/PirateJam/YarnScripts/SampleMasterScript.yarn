@@ -1,0 +1,33 @@
+﻿title: Start
+tags:
+---
+Mentor: Heya! This is a test dialogue! 
+<<declare $grade = "empty">> 
+===
+title: Quip1
+tags:
+---
+Mentor: You're really getting the hang of that!
+
+===
+title: Feedback0Good
+tags:
+---
+MentorWS0: Nice work! 
+MentorWS0: That's a {$grade} for you!
+
+===
+title: Feedback0Pass
+tags:
+---
+MentorWS0: Hmmm , good enough
+MentorWS0: {$grade}
+
+===
+title: Feedback0Fail
+tags:
+---
+MentorWS0: Erf, Try again
+MentorWS0: {$grade}
+
+===

@@ -73,10 +73,17 @@ namespace PirateJam.Scripts.WorkStations
 
         public virtual void Evaluate()
         {
-            Debug.Log("Score: " + Score/100f);
-            
-            ActionList.ActionList.Instance.AddAction(new DelegateAction<float>(true, mentor.GiveGrade, Score / 100f, 1,
+            var grade = Score / 100f;
+            var status = grade >= 0.7f ?( grade >= 0.9f ? "Good" : "Pass") : "Fail";
+
+            Debug.Log("Score: " + grade);
+
+            ActionList.ActionList.Instance.AddAction(new DelegateAction<float>(true, mentor.GiveGrade, grade, 1,
                 0.5f));
+
+            ActionList.ActionList.Instance.AddAction(new DelegateAction<string>(true, GameManager.Instance.RunQuip,
+                "Feedback" + WorkStationNumber + status));
+
             ActionList.ActionList.Instance.AddAction(new DelegateAction(false, Close, 1, 3f));
         }
 
@@ -93,9 +100,8 @@ namespace PirateJam.Scripts.WorkStations
 
             if (Score / 100f > .70 && currentLevel <= Level)
                 ++currentLevel;
-            
-            GameManager.Instance.GameComplete();
 
+            GameManager.Instance.GameComplete();
         }
     }
 }
