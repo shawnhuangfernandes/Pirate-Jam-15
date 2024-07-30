@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cinemachine;
+using FMODUnity;
 using PirateJam.Scripts.App;
 using PirateJam.Scripts.WorkStations;
 using UnityEditor;
@@ -25,17 +26,27 @@ namespace PirateJam.Scripts
         [Header("Objects")] [SerializeField] private GameObject TEMPwinscreen;
         [SerializeField] private DialogueRunner runner;
 
-        public InMemoryVariableStorage VariableStorage;
+       [HideInInspector] public InMemoryVariableStorage VariableStorage;
+
+       [SerializeField] private FMODUnity.EventReference musicEvent;
+       [SerializeField] private FMODUnity.EventReference ambienceEvent;
+       [SerializeField] private FMODUnity.EventReference menuEndEvent;
+
+       private FMOD.Studio.EventInstance musicStartInstance;
+       private FMOD.Studio.EventInstance ambienceStartInstance;
+
+
 
         public enum GameState
         {
+            None,
             Menu,
             Move,
             WorkStation,
             Pause
         }
 
-        [Header("Stats"),SerializeField] private GameState currentState;
+        [Header("Stats"),SerializeField] private GameState currentState = GameState.None;
         [ShowOnly] public List<WorkStation> workStations;
 
         private GameObject currentCamera;
@@ -45,17 +56,22 @@ namespace PirateJam.Scripts
         {
             Initialize();
             VariableStorage = runner.gameObject.GetComponent<InMemoryVariableStorage>();
+            musicStartInstance = RuntimeManager.CreateInstance(musicEvent);
+            ambienceStartInstance = RuntimeManager.CreateInstance(ambienceEvent);
         }
         
         public void Initialize()
         {
-            SwapGameState(GameState.Menu);
             currentCamera = MenuCam.gameObject;
+            SwapGameState(GameState.Menu);
+            ambienceStartInstance.start();
         }
 
         public void MenuStartPlay()
         {
             SwapGameState(GameState.Move);
+            RuntimeManager.PlayOneShot(menuEndEvent);
+            
             RunExposition();
         }
 
@@ -68,6 +84,8 @@ namespace PirateJam.Scripts
             {
                 case GameState.Menu:
                     InputManager.Instance.SwapInputMaps("Menu");
+                    RuntimeManager.PlayOneShot(musicEvent);
+                   // musicStartInstance.start();
                     currentCamera.SetActive(false);
                     currentCamera = MenuCam.gameObject;
                     currentCamera.SetActive(true);

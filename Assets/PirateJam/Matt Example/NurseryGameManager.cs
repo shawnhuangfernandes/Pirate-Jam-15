@@ -30,7 +30,8 @@ public class NurseryGameManager : WorkStation
     private int RemainingFood;
 
     private bool isOpen = false;
-    private void Start()
+
+    protected override void Start()
     {
         base.Start();
         

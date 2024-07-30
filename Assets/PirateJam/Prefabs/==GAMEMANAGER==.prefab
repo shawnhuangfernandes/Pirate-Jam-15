@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8432124698287281606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8432124698287281600}
+  - component: {fileID: 8432124698287281601}
+  - component: {fileID: 8432124698287281603}
+  m_Layer: 0
+  m_Name: ==GAMEMANAGER==
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8432124698287281600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432124698287281606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8432124698287281601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432124698287281606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947af6bff6608614296afdf7138131df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuCam: {fileID: 0}
+  MoveCam: {fileID: 0}
+  WorkStation0: {fileID: 0}
+  WorkStation1: {fileID: 0}
+  WorkStation2: {fileID: 0}
+  WorkStation3: {fileID: 0}
+  TEMPwinscreen: {fileID: 0}
+  runner: {fileID: 0}
+  VariableStorage: {fileID: 0}
+  musicEvent:
+    Guid:
+      Data1: 379780050
+      Data2: 1294282591
+      Data3: 1509568174
+      Data4: 461611264
+    Path: event:/Music and Ambience/Menu_Music
+  ambienceEvent:
+    Guid:
+      Data1: -168464696
+      Data2: 1184130175
+      Data3: 908505732
+      Data4: -1667910320
+    Path: event:/Music and Ambience/Ambience
+  menuEndEvent:
+    Guid:
+      Data1: -901224533
+      Data2: 1285704414
+      Data3: -549379665
+      Data4: -914459194
+    Path: event:/Music and Ambience/Menu_PressPlay
+  currentState: 0
+  workStations: []
+--- !u!114 &8432124698287281603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432124698287281606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 379780050
+      Data2: 1294282591
+      Data3: 1509568174
+      Data4: 461611264
+    Path: event:/Music and Ambience/Menu_Music
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
