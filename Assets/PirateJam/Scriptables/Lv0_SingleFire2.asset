@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchables:
   - prefab: {fileID: 1933092466970407947, guid: 343410800e461ce4984cef25f234d1d7, type: 3}
-    speed: 10
+    speed: 8
     launchAngle: 60

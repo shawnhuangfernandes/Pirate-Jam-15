@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 4585722480892856586}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.7, z: -0}
-  m_LocalScale: {x: 0.120000005, y: 0.21061762, z: 0.29956073}
+  m_LocalScale: {x: 0.2106176, y: 0.21061762, z: 0.2106176}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 788251675370205673}
@@ -267,6 +267,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1625011554000740194}
     m_Modifications:
+    - target: {fileID: 7553949240189571334, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2106176
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949240189571334, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2106176
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949240189571334, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2106176
+      objectReference: {fileID: 0}
     - target: {fileID: 7553949240524532688, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_Name
       value: '[Minigame] DragonDrop'
@@ -277,6 +289,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
@@ -319,6 +343,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8406066634709086526, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.838
@@ -327,9 +355,25 @@ PrefabInstance:
       propertyPath: mentor
       value: 
       objectReference: {fileID: 1625011554076301284}
+    - target: {fileID: 8406066635464162935, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: debugFiringPattern
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc881f8d869b354eb7765d25f4faea4, type: 2}
+    - target: {fileID: 8406066635464162935, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: firingSequences.Array.data[0].firingInstances.Array.data[1].delayBeforeFiring
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066635464162935, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: firingSequences.Array.data[0].firingInstances.Array.data[2].delayBeforeFiring
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8406066635995958730, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066635995958735, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d65764dde650714bb412f745ecb297a, type: 3}

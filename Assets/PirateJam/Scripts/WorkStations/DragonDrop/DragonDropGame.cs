@@ -22,6 +22,9 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         [Tooltip("The available firing sequences that this mini game will sample from to shoot stuff at the player's bucket")]
         [SerializeField] private List<FiringSequence> firingSequences = new List<FiringSequence>();
 
+        [Tooltip("DEBUG - The firing pattern used to test (triggered through context menu)")]
+        [SerializeField] private FiringPattern debugFiringPattern;
+
         private const int LV_0_DRAGON_SPIT_CHALLENGES = 5;
 
         // Runs the visual/audio gameplay logic when a minigame is triggered by the player
@@ -31,7 +34,9 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
 
             bucketFollower.SetFollow(true);
 
-            TriggerSkillCheck();
+            // IF DEBUGGING IS ENABLED, DO NOT START THE ACTIVITY
+            if (debugFiringPattern == null)
+                TriggerSkillCheck();
         }
 
         // Runs the visual/audio gameplay logic when a minigame reaches its end
@@ -74,6 +79,12 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
             FiringPattern firingPattern = firingInstance.GetFiringPattern();
 
             firingPattern.Launch(dragon.transform);
+        }
+
+        [ContextMenu("DEBUG Fire Projectile")]
+        public void DebugFireProjectile()
+        {
+            debugFiringPattern.Launch(dragon.transform);
         }
 
         /*
