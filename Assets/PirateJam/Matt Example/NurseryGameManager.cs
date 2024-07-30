@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PirateJam.Scripts.WorkStations;
 using UnityEngine;
 
-public class NurseryGameManager : MonoBehaviour
+public class NurseryGameManager : WorkStation
 {
     public int TotalCreatures = 15;
     public float SpawnMargin = 0.1f;
@@ -28,15 +29,27 @@ public class NurseryGameManager : MonoBehaviour
     private GameObject HungryParticles;
     private int RemainingFood;
 
+    private bool isOpen = false;
     private void Start()
     {
+        base.Start();
+        
         PlayAreaBounds = PlayArea.GetComponent<Collider>().bounds;
         FoodPlane = new Plane(Vector3.up, new Vector3(0, PlayArea.position.y + FoodHeight, 0));
+       
+    }
+
+    public override void Open()
+    {
+        base.Open();
+        isOpen = true;
         StartCoroutine(SpawnCreaturesSequentially());
     }
 
     private void Update()
     {
+        if (!isOpen) return;
+        
         HandleFoodInteraction();
         UpdateParticleSystemPosition();
     }
@@ -262,31 +275,19 @@ public class NurseryGameManager : MonoBehaviour
             FeedingQueue.Dequeue();
             CreatureList.Remove(creature);
             Destroy(HungryParticles);
-            Merit();
+            AddAchievement(new Grade("Fed correct pet", 10));
             SpawnParticleSystem();
         }
     }
 
     public void OnIncorrectCreatureFed(CreatureController creature)
     {
-        Demerit();
+        AddDemerit(new Grade("Incorrect food for pet", 10));
 
         if (FeedingQueue.Count > 0 && HungryParticles != null && HungryParticles.transform.parent == creature.transform)
         {
             Destroy(HungryParticles);
             SpawnParticleSystem();
         }
-    }
-
-    private void Merit()
-    {
-        Debug.Log("MERIT - Correct creature fed");
-        // Add any additional merit logic here
-    }
-
-    private void Demerit()
-    {
-        Debug.Log("DEMERIT - Incorrect creature fed");
-        // Add any additional demerit logic here
     }
 }

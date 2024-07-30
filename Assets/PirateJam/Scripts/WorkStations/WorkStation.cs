@@ -29,7 +29,7 @@ namespace PirateJam.Scripts.WorkStations
         [SerializeField] private List<Grade> _demerits = new();
         [SerializeField] private List<Grade> _achievements = new();
 
-        private void Start()
+        protected virtual void Start()
         {
             GameManager.Instance.workStations.Add(this);
         }

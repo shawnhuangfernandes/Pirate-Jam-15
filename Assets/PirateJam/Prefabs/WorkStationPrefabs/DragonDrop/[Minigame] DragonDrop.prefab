@@ -369,6 +369,7 @@ MonoBehaviour:
       firingPattern: {fileID: 11400000, guid: ceac8a2a802948c4a9028c9e73dc5705, type: 2}
     - delayBeforeFiring: 1
       firingPattern: {fileID: 11400000, guid: f995f873dcbed964cae4a4ed1e033355, type: 2}
+  debugFiringPattern: {fileID: 0}
 --- !u!1 &7553949240613155610
 GameObject:
   m_ObjectHideFlags: 0

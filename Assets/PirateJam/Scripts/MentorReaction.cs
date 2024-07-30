@@ -5,7 +5,7 @@ using Yarn.Unity;
 
 namespace PirateJam.Scripts
 {
-    public class MentorReaction : Singleton<MentorReaction>
+    public class MentorReaction : MonoBehaviour
     {
         [SerializeField] private GameObject visuals;
 
