@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FMODUnity;
 using PirateJam.Scripts.WorkStations;
+using TMPro;
 using UnityEngine;
 
 public class NurseryGameManager : WorkStation
@@ -29,6 +30,8 @@ public class NurseryGameManager : WorkStation
     private Bounds PlayAreaBounds;
     private GameObject HungryParticles;
    [SerializeField,ShowOnly] private int RemainingFood;
+
+   [SerializeField] private TMP_Text FoodText, QueueText;
 
     private bool isOpen = false;
 
@@ -113,6 +116,10 @@ public class NurseryGameManager : WorkStation
             CreatureController currentCreature = FeedingQueue.Peek();
             HungryParticles = Instantiate(ParticleSystemPrefab, currentCreature.transform.position, Quaternion.identity,
                 currentCreature.transform);
+            if (RemainingFood <= 0)
+            {
+                Evaluate();
+            }
         }
         else
         {
@@ -235,6 +242,12 @@ public class NurseryGameManager : WorkStation
         }
     }
 
+    private void UpdateHUD()
+    {
+        FoodText.text = RemainingFood.ToString();
+        QueueText.text = FeedingQueue.Count.ToString();
+    }
+
     private Vector3 GetFoodPositionFromMouse()
     {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
@@ -279,6 +292,7 @@ public class NurseryGameManager : WorkStation
         {
             OnIncorrectCreatureFed(creature);
         }
+        UpdateHUD();
     }
 
     public void OnCorrectCreatureFed(CreatureController creature)

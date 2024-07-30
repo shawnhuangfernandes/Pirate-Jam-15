@@ -36,7 +36,7 @@ namespace PirateJam.Scripts.WorkStations
             GameManager.Instance.workStations.Add(this);
         }
 
-        public int Score { get; protected set; } = 100;
+        public int Score { get; protected set; } = 69;
 
         public virtual void Open()
         {

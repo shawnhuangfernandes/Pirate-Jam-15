@@ -174,7 +174,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.67
+  m_Radius: 4.83
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &191214674875788517
 GameObject:
@@ -229,6 +229,27 @@ MonoBehaviour:
   currentLevel: 0
   <Level>k__BackingField: 0
   mentor: {fileID: 0}
+  goodGrade:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  passGrade:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  failGrade:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   TotalCreatures: 10
   SpawnMargin: 0.1
   FoodHeight: 2
@@ -243,6 +264,42 @@ MonoBehaviour:
   FoodBag: {fileID: 191214674387572734}
   MainCamera: {fileID: 0}
   ParticleSystemPrefab: {fileID: 2856078314284933770, guid: a21793f119e991e4a98b3431184147e6, type: 3}
+  RemainingFood: 0
+  animalNoiseStart:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  animalNoiseStop:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  animalNoise:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  animalRight:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  animalWrong:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &191214675279899702
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,14 +325,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191214675279899702}
-  m_LocalRotation: {x: -0.4844543, y: 0.12370526, z: -0.21426417, w: 0.83910185}
-  m_LocalPosition: {x: -0.35200006, y: 0.00000013085543, z: -0.29699993}
-  m_LocalScale: {x: 0.16228245, y: 0.16228245, z: -0.16228245}
+  m_LocalRotation: {x: -0.15768221, y: -0.6893013, z: 0.6893013, w: 0.15768221}
+  m_LocalPosition: {x: 0, y: 0, z: -0.29699993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 191214674387572735}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 475.77, y: 90, z: -90}
 --- !u!33 &191214675279899698
 MeshFilter:
   m_ObjectHideFlags: 0
