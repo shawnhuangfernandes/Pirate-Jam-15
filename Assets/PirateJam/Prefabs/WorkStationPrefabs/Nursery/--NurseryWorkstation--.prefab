@@ -50,8 +50,29 @@ MonoBehaviour:
   screen: {fileID: 8062115469065970513}
   WorkStationNumber: 1
   currentLevel: 0
-  <Level>k__BackingField: 0
+  <Level>k__BackingField: 1
   mentor: {fileID: 8062115468144479178}
+  goodGrade:
+    Guid:
+      Data1: 1722128531
+      Data2: 1274761385
+      Data3: 234030256
+      Data4: 415665260
+    Path: event:/Final Report/ReportGrade_Great
+  passGrade:
+    Guid:
+      Data1: 118656415
+      Data2: 1193735382
+      Data3: 393332408
+      Data4: -1252425954
+    Path: event:/Final Report/ReportGrade_Good
+  failGrade:
+    Guid:
+      Data1: -1495111337
+      Data2: 1321978744
+      Data3: -727563113
+      Data4: -745209032
+    Path: event:/Final Report/ReportGrade_Poor
   TotalCreatures: 10
   SpawnMargin: 0.1
   FoodHeight: 2
@@ -66,6 +87,42 @@ MonoBehaviour:
   FoodBag: {fileID: 8062115468443211850}
   MainCamera: {fileID: 0}
   ParticleSystemPrefab: {fileID: 2856078314284933770, guid: a21793f119e991e4a98b3431184147e6, type: 3}
+  RemainingFood: 0
+  animalNoiseStart:
+    Guid:
+      Data1: 1993134056
+      Data2: 1089458657
+      Data3: -565906511
+      Data4: -742670145
+    Path: event:/Music and Ambience/AnimalNursery_Start
+  animalNoiseStop:
+    Guid:
+      Data1: -2082879046
+      Data2: 1221601000
+      Data3: 1461897396
+      Data4: -1097812662
+    Path: event:/Music and Ambience/AnimalNursery_Stop
+  animalNoise:
+    Guid:
+      Data1: 1993134056
+      Data2: 1089458657
+      Data3: -565906511
+      Data4: -742670145
+    Path: event:/Music and Ambience/AnimalNursery_Start
+  animalRight:
+    Guid:
+      Data1: -1231271555
+      Data2: 1096170037
+      Data3: -1767934840
+      Data4: 1390158954
+    Path: event:/Animal Nursery/Animal_Correct
+  animalWrong:
+    Guid:
+      Data1: -250539349
+      Data2: 1139760508
+      Data3: 1707738555
+      Data4: -1500488211
+    Path: event:/Animal Nursery/Animal_Wrong
 --- !u!1001 &5817347018894625677
 PrefabInstance:
   m_ObjectHideFlags: 0

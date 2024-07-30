@@ -25,6 +25,10 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         [Tooltip("DEBUG - The firing pattern used to test (triggered through context menu)")]
         [SerializeField] private FiringPattern debugFiringPattern;
 
+        [Header("SFX"),SerializeField] private FMODUnity.EventReference popInNoise;
+
+        
+
         private const int LV_0_DRAGON_SPIT_CHALLENGES = 5;
 
         // Runs the visual/audio gameplay logic when a minigame is triggered by the player

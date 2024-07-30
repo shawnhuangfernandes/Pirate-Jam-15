@@ -52,6 +52,27 @@ MonoBehaviour:
   currentLevel: 0
   <Level>k__BackingField: 1
   mentor: {fileID: 1625011554076301284}
+  goodGrade:
+    Guid:
+      Data1: 1722128531
+      Data2: 1274761385
+      Data3: 234030256
+      Data4: 415665260
+    Path: event:/Final Report/ReportGrade_Great
+  passGrade:
+    Guid:
+      Data1: 118656415
+      Data2: 1193735382
+      Data3: 393332408
+      Data4: -1252425954
+    Path: event:/Final Report/ReportGrade_Good
+  failGrade:
+    Guid:
+      Data1: -1495111337
+      Data2: 1321978744
+      Data3: -727563113
+      Data4: -745209032
+    Path: event:/Final Report/ReportGrade_Poor
   dragon: {fileID: 1625011554986538025}
   bucketFollower: {fileID: 788251673965072221}
   firingSequences:
@@ -75,6 +96,13 @@ MonoBehaviour:
     - delayBeforeFiring: 1
       firingPattern: {fileID: 11400000, guid: f995f873dcbed964cae4a4ed1e033355, type: 2}
   debugFiringPattern: {fileID: 0}
+  popInNoise:
+    Guid:
+      Data1: 571089993
+      Data2: 1080993643
+      Data3: -1918791547
+      Data4: -2038285760
+    Path: event:/Dragon Drop/Intern_Teleport
 --- !u!1 &4585722480892856586
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +343,46 @@ PrefabInstance:
     - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: game
       value: 
+      objectReference: {fileID: 7670122265837414422}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireCaught.Path
+      value: event:/Dragon Drop/Fireball_Caught
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitCaught.Path
+      value: event:/Dragon Drop/Spit_Caught
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireCaught.Guid.Data1
+      value: -810521777
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireCaught.Guid.Data2
+      value: 1134319601
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireCaught.Guid.Data3
+      value: -721825386
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireCaught.Guid.Data4
+      value: -226926405
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitCaught.Guid.Data1
+      value: -1827571573
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitCaught.Guid.Data2
+      value: 1153115284
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitCaught.Guid.Data3
+      value: -590373963
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949239377800014, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitCaught.Guid.Data4
+      value: 1716769213
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240189571329, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -447,6 +515,46 @@ PrefabInstance:
     - target: {fileID: 8406066634709086526, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.838
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireDrop.Path
+      value: event:/Dragon Drop/Fireball_HitsFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitDrop.Path
+      value: event:/Dragon Drop/Spit_HitsFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireDrop.Guid.Data1
+      value: -1363211662
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireDrop.Guid.Data2
+      value: 1162163886
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireDrop.Guid.Data3
+      value: 1554723775
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: fireDrop.Guid.Data4
+      value: 1034292734
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitDrop.Guid.Data1
+      value: 1146710084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitDrop.Guid.Data2
+      value: 1087566922
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitDrop.Guid.Data3
+      value: 1498097071
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406066634709086527, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: spitDrop.Guid.Data4
+      value: 1634757442
       objectReference: {fileID: 0}
     - target: {fileID: 8406066635464162935, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: mentor

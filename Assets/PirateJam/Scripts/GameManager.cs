@@ -32,9 +32,6 @@ namespace PirateJam.Scripts
        [SerializeField] private FMODUnity.EventReference ambienceEvent;
        [SerializeField] private FMODUnity.EventReference menuEndEvent;
 
-       private FMOD.Studio.EventInstance musicStartInstance;
-       private FMOD.Studio.EventInstance ambienceStartInstance;
-
 
 
         public enum GameState
@@ -56,15 +53,13 @@ namespace PirateJam.Scripts
         {
             Initialize();
             VariableStorage = runner.gameObject.GetComponent<InMemoryVariableStorage>();
-            musicStartInstance = RuntimeManager.CreateInstance(musicEvent);
-            ambienceStartInstance = RuntimeManager.CreateInstance(ambienceEvent);
         }
         
         public void Initialize()
         {
             currentCamera = MenuCam.gameObject;
             SwapGameState(GameState.Menu);
-            ambienceStartInstance.start();
+            RuntimeManager.PlayOneShot(ambienceEvent);
         }
 
         public void MenuStartPlay()

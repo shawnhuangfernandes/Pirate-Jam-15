@@ -19,3 +19,17 @@ MonoBehaviour:
   - prefab: {fileID: 1933092466970407947, guid: 343410800e461ce4984cef25f234d1d7, type: 3}
     speed: 8
     launchAngle: 25
+  fireCast:
+    Guid:
+      Data1: 741600587
+      Data2: 1178256562
+      Data3: -1250483574
+      Data4: 1780476323
+    Path: event:/Dragon Drop/Fireball_Cast
+  spitCast:
+    Guid:
+      Data1: -1186324167
+      Data2: 1237309890
+      Data3: -1195486062
+      Data4: 1636256717
+    Path: event:/Dragon Drop/Dragon_Spit

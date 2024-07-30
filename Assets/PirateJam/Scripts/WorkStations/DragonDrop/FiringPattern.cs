@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 namespace PirateJam.Scripts.WorkStations.DragonDrop
@@ -10,6 +11,8 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         [Tooltip("The list of objects to launch when this firing pattern activates")]
         [SerializeField] private List<LaunchableObject> launchables = new List<LaunchableObject>();
 
+        [SerializeField] private FMODUnity.EventReference fireCast;
+        [SerializeField] private FMODUnity.EventReference spitCast;
         public void Launch(Transform origin)
         {
             foreach(LaunchableObject launchable in launchables)
@@ -17,10 +20,11 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
                 var dir = Quaternion.AngleAxis(launchable.launchAngle, origin.forward);
                 
                var launch = Instantiate(launchable.prefab, origin.position, origin.rotation, origin);
-               var launchableRb = launch.GetComponent<Rigidbody>(); 
-               
-              launch.transform.Rotate(origin.up,90f);
-              launch.transform.Rotate(origin.right,launchable.launchAngle);
+               var launchableRb = launch.GetComponent<Rigidbody>();
+               RuntimeManager.PlayOneShot(launch.TryGetComponent(out DragonSpit ball) ? spitCast : fireCast);
+
+               launch.transform.Rotate(origin.up,90f);
+                launch.transform.Rotate(origin.right,launchable.launchAngle);
                
                launchableRb.velocity = launch.transform.forward * launchable.speed;
             }

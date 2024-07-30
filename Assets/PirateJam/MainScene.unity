@@ -1122,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9162669819732438723, guid: a5fbf586387f08b4498991218e2673c2, type: 3}
+      propertyPath: typewriterEffectSpeed
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5fbf586387f08b4498991218e2673c2, type: 3}
 --- !u!1 &198044219
@@ -4738,26 +4742,6 @@ PrefabInstance:
       propertyPath: TEMPwinscreen
       value: 
       objectReference: {fileID: 78653284}
-    - target: {fileID: 8432124698287281601, guid: 69b39f26d7fb69545961f72d2a34f4c2, type: 3}
-      propertyPath: musicEvent.Path
-      value: event:/Music and Ambience/Menu_Music
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432124698287281601, guid: 69b39f26d7fb69545961f72d2a34f4c2, type: 3}
-      propertyPath: musicEvent.Guid.Data1
-      value: 379780050
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432124698287281601, guid: 69b39f26d7fb69545961f72d2a34f4c2, type: 3}
-      propertyPath: musicEvent.Guid.Data2
-      value: 1294282591
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432124698287281601, guid: 69b39f26d7fb69545961f72d2a34f4c2, type: 3}
-      propertyPath: musicEvent.Guid.Data3
-      value: 1509568174
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432124698287281601, guid: 69b39f26d7fb69545961f72d2a34f4c2, type: 3}
-      propertyPath: musicEvent.Guid.Data4
-      value: 461611264
-      objectReference: {fileID: 0}
     - target: {fileID: 8432124698287281606, guid: 69b39f26d7fb69545961f72d2a34f4c2, type: 3}
       propertyPath: m_Name
       value: ==GAMEMANAGER==
@@ -6345,10 +6329,6 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 1832329322}
-    - target: {fileID: 514236693424579026, guid: e09418ac85d211f478a387d85588902c, type: 3}
-      propertyPath: <Level>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8062115468203131723, guid: e09418ac85d211f478a387d85588902c, type: 3}
       propertyPath: m_Name
       value: --NurseryWorkstation--
@@ -6397,14 +6377,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8062115468254685683, guid: e09418ac85d211f478a387d85588902c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062115469065970515, guid: e09418ac85d211f478a387d85588902c, type: 3}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 1832329322}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e09418ac85d211f478a387d85588902c, type: 3}
 --- !u!1 &1952493117
@@ -6931,10 +6903,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1832329322}
-    - target: {fileID: 7670122265837414422, guid: d2c602c3fe4337c468799dd1f4ff07f5, type: 3}
-      propertyPath: <Level>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c602c3fe4337c468799dd1f4ff07f5, type: 3}
 --- !u!1001 &1750412914270586626
