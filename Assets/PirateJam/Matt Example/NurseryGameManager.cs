@@ -246,8 +246,8 @@ public class NurseryGameManager : WorkStation
 
     private void UpdateHUD()
     {
-        FoodText.text = RemainingFood.ToString();
-        QueueText.text = FeedingQueue.Count.ToString();
+        FoodText.text = RemainingFood.ToString() + "\n Food Left";
+        QueueText.text = FeedingQueue.Count.ToString() + "\n Creatures To Feed";
         
         if (FeedingQueue.Count > 0)
         {

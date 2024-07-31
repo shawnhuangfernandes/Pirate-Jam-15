@@ -4812,6 +4812,50 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &2120567345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120567347}
+  - component: {fileID: 2120567346}
+  m_Layer: 0
+  m_Name: '[Mesh] FiringPoint'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2120567347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120567345}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.14, y: 0.86, z: 0}
+  m_LocalScale: {x: 0.36464226, y: 0.2106176, z: 0.37287742}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1625011554986538024}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2120567346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120567345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df92a77351a40a4cba87cff4037e6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625011554000740197
 GameObject:
   m_ObjectHideFlags: 0
@@ -4885,7 +4929,8 @@ MonoBehaviour:
       Data3: -727563113
       Data4: -745209032
     Path: event:/Final Report/ReportGrade_Poor
-  dragon: {fileID: 1625011554986538025}
+  <Score>k__BackingField: 69
+  dragon: {fileID: 2120567346}
   bucketFollower: {fileID: 788251673965072221}
   firingSequences:
   - firingInstances:
@@ -5238,11 +5283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240189571334, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7701
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240189571334, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8113
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240189571334, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5279,6 +5324,10 @@ PrefabInstance:
     - target: {fileID: 7553949240524532688, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_Name
       value: '[Minigame] DragonDrop'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553949240524532688, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7553949240524532689, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
       propertyPath: m_RootOrder
@@ -5446,6 +5495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8406066635464162935, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+    - {fileID: 8406066634115975251, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
 --- !u!1 &788251673533634474 stripped
 GameObject:
@@ -5478,14 +5528,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7553949240281763219, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
   m_PrefabInstance: {fileID: 7072175850503781498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1625011554986538025 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8406066634115975251, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
+--- !u!4 &1625011554986538024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8406066634115975250, guid: 1d65764dde650714bb412f745ecb297a, type: 3}
   m_PrefabInstance: {fileID: 7072175850503781498}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df92a77351a40a4cba87cff4037e6ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
