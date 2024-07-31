@@ -33,8 +33,7 @@ namespace PirateJam.Scripts
 
             _manager.isMoving = _moveAction.IsPressed;
            
-
-            _body.position += new Vector3(delta.x,0,delta.y) * (Time.fixedDeltaTime * moveSpeed);
+            _body.velocity = new Vector3(delta.x, 0, delta.y) * (Time.fixedDeltaTime * moveSpeed);
         }
     }
 }

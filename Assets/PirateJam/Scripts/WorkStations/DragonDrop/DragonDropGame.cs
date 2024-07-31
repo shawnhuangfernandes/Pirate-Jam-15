@@ -19,17 +19,26 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         [Tooltip("The bucket that follows the mouse to catch the spit")]
         [SerializeField] private MouseFollower bucketFollower;
 
-        [Tooltip("The available firing sequences that this mini game will sample from to shoot stuff at the player's bucket")]
-        [SerializeField] private List<FiringSequence> firingSequences = new List<FiringSequence>();
-
         [Tooltip("DEBUG - The firing pattern used to test (triggered through context menu)")]
         [SerializeField] private FiringPattern debugFiringPattern;
 
+        [Tooltip("The starting maximum firing delay between dragon shots")]
+        [SerializeField] private float maximumFiringDelay = 2F;
+
+        [Tooltip("The ending minimum firing delay between dragon shots")]
+        [SerializeField] private float minimalFiringDelay = 1F;
+
+        [Tooltip("The percentage of shots made until the delay is the ending firing delay")]
+        [Range(0F, 1F)]
+        [SerializeField] private float percentageOfShotsUntilMinimalDelay = 0.5F;
+
+        [Tooltip("The firing patterns used by the dragon")]
+        [SerializeField] private List<FiringPattern> dragonFiringPatterns = new List<FiringPattern>();
+
         [Header("SFX"),SerializeField] private FMODUnity.EventReference popInNoise;
 
-        
-
-        private const int LV_0_DRAGON_SPIT_CHALLENGES = 5;
+        [Tooltip("The number of times the dragon shoots fire or spit")]
+        [SerializeField] private int numberOfDragonShots = 35;
 
         // Runs the visual/audio gameplay logic when a minigame is triggered by the player
         public override void Open()
@@ -59,15 +68,14 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
 
         private IEnumerator ActivateDragonSpitting()
         {
-            for (int i = 0; i < LV_0_DRAGON_SPIT_CHALLENGES; i++)
-            {
-                FiringSequence chosenFiringSequence = firingSequences[UnityEngine.Random.Range(0, firingSequences.Count)];
+            yield return new WaitForSeconds(2F);
 
-                foreach(FiringInstance firingInstance in chosenFiringSequence.firingInstances)
-                {
-                    yield return new WaitForSeconds(firingInstance.GetPreFireDelay());
-                    MakeDragonProjectileSpit(firingInstance);
-                }
+            for (int i = 0; i < numberOfDragonShots; i++)
+            {
+                float interpolant = (i / (float) numberOfDragonShots) / percentageOfShotsUntilMinimalDelay;
+                float firingDelay = Mathf.Lerp(maximumFiringDelay, minimalFiringDelay, interpolant);
+                yield return new WaitForSeconds(firingDelay);
+                MakeDragonProjectileSpit();
             }
 
             //When done with patterns end game
@@ -77,10 +85,10 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         }
 
         // Makes the dragon shoot spit or fireballs
-        public void MakeDragonProjectileSpit(FiringInstance firingInstance)
+        public void MakeDragonProjectileSpit()
         {
             // foreach prefab in the firing pattern, if the object to launch is a spit, increment the skill check
-            FiringPattern firingPattern = firingInstance.GetFiringPattern();
+            FiringPattern firingPattern = dragonFiringPatterns[UnityEngine.Random.Range(0, dragonFiringPatterns.Count)];
 
             firingPattern.Launch(dragon.transform);
         }
@@ -97,15 +105,10 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         [Serializable]
         public class FiringInstance
         {
-            [Tooltip("The delay before the firing pattern occurs")]
-            [SerializeField] private float delayBeforeFiring;
-
             [Tooltip("The firing pattern (think shotgun spread) used")]
             [SerializeField] private FiringPattern firingPattern;
 
             public FiringPattern GetFiringPattern() => firingPattern;
-
-            public float GetPreFireDelay() => delayBeforeFiring;
         }
 
         /*
