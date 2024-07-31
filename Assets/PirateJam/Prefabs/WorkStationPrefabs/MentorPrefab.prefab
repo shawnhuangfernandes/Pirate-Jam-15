@@ -4907,7 +4907,7 @@ GameObject:
   - component: {fileID: 4564746799411839047}
   - component: {fileID: 1348437248}
   m_Layer: 0
-  m_Name: --ScoreMentor--
+  m_Name: MentorPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4944,6 +4944,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visuals: {fileID: 4564746799400936062}
   poofParticles: {fileID: 1683647318916758786}
+  teleportNoise:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &1348437248
 MonoBehaviour:
   m_ObjectHideFlags: 0
