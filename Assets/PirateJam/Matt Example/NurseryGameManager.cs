@@ -319,7 +319,7 @@ public class NurseryGameManager : WorkStation
             FeedingQueue.Dequeue();
             CreatureList.Remove(creature);
             Destroy(HungryParticles);
-            AddAchievement(new Grade("Fed correct pet", 10));
+            AddAchievement(new Grade("Fed correct pet", 3));
             RuntimeManager.PlayOneShot(animalRight);
             SpawnParticleSystem();
         }
@@ -327,7 +327,7 @@ public class NurseryGameManager : WorkStation
 
     public void OnIncorrectCreatureFed(CreatureController creature)
     {
-        AddDemerit(new Grade("Incorrect food for pet", 10));
+        AddDemerit(new Grade("Incorrect food for pet", 5));
         RuntimeManager.PlayOneShot(animalWrong);
 
         if (FeedingQueue.Count > 0 && HungryParticles != null && HungryParticles.transform.parent == creature.transform)
@@ -345,6 +345,13 @@ public class NurseryGameManager : WorkStation
     public override void Close()
     {
         base.Close();
+        FeedingQueue.Clear();
+        foreach (var creature in CreatureList)
+        {
+            Destroy(creature.gameObject);
+        }
+        CreatureList.Clear();
+        ActiveFoods.Clear();
         RuntimeManager.PlayOneShot(animalNoiseStop);
     }
 }
