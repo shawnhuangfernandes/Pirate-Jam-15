@@ -26,7 +26,7 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
             
             else if (other.TryGetComponent(out DragonSpit spitball))
             {
-                game.AddAchievement(new WorkStation.Grade("spit caught", 1));
+                game.AddAchievement(new WorkStation.Grade("spit caught", 5));
                 RuntimeManager.PlayOneShot(spitCaught);
                 Destroy(other.gameObject);
             }

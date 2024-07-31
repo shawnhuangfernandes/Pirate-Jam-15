@@ -34,6 +34,7 @@ namespace PirateJam.Scripts.WorkStations
         protected virtual void Start()
         {
             GameManager.Instance.workStations.Add(this);
+            Score = 70;
         }
 
         public int Score { get; protected set; } = 69;
@@ -104,8 +105,6 @@ namespace PirateJam.Scripts.WorkStations
 
         public virtual void Close()
         {
-            GameManager.Instance.SwapGameState(GameManager.GameState.Move);
-
             screen.SetActive(false);
 
             if (Score / 100f > .70 && currentLevel <= Level)

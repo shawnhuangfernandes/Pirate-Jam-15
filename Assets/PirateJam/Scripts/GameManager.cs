@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using Cinemachine;
 using FMODUnity;
+using PirateJam.Scripts.ActionList;
 using PirateJam.Scripts.App;
 using PirateJam.Scripts.WorkStations;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Yarn.Unity;
 
 namespace PirateJam.Scripts
@@ -24,7 +26,7 @@ namespace PirateJam.Scripts
         [SerializeField] private CinemachineVirtualCamera WorkStation3;
 
         [Header("Objects")] [SerializeField] private GameObject TEMPwinscreen;
-        [SerializeField] private DialogueRunner runner;
+        [SerializeField] public DialogueRunner runner;
 
        [HideInInspector] public InMemoryVariableStorage VariableStorage;
 
@@ -32,7 +34,7 @@ namespace PirateJam.Scripts
        [SerializeField] private FMODUnity.EventReference ambienceEvent;
        [SerializeField] private FMODUnity.EventReference menuEndEvent;
 
-
+       [SerializeField] private MentorReaction mentor;
 
         public enum GameState
         {
@@ -40,7 +42,9 @@ namespace PirateJam.Scripts
             Menu,
             Move,
             WorkStation,
-            Pause
+            Pause,
+            Dialogue,
+            EndGame,
         }
 
         [Header("Stats"),SerializeField] private GameState currentState = GameState.None;
@@ -48,11 +52,17 @@ namespace PirateJam.Scripts
 
         private GameObject currentCamera;
 
+        protected override void Awake()
+        {
+            base.Awake();
+        }
+
         // Start is called before the first frame update
         public void Start()
         {
             Initialize();
-            VariableStorage = runner.gameObject.GetComponent<InMemoryVariableStorage>();
+            VariableStorage = runner.gameObject.GetComponent<InMemoryVariableStorage>();    
+            
         }
         
         public void Initialize()
@@ -65,9 +75,20 @@ namespace PirateJam.Scripts
         public void MenuStartPlay()
         {
             SwapGameState(GameState.Move);
+            
             RuntimeManager.PlayOneShot(menuEndEvent);
             
-            RunExposition();
+           ActionList.ActionList.Instance.AddAction(new DelegateAction(true,RunExposition,1,2f));
+        }
+
+        public void StartDialogue()
+        {
+            SwapGameState(GameState.Dialogue);
+        }
+
+        public void StopDialogue()
+        {
+            SwapGameState(GameState.Move);
         }
 
 
@@ -80,7 +101,6 @@ namespace PirateJam.Scripts
                 case GameState.Menu:
                     InputManager.Instance.SwapInputMaps("Menu");
                     RuntimeManager.PlayOneShot(musicEvent);
-                   // musicStartInstance.start();
                     currentCamera.SetActive(false);
                     currentCamera = MenuCam.gameObject;
                     currentCamera.SetActive(true);
@@ -110,6 +130,15 @@ namespace PirateJam.Scripts
                     //TODO: Throw PauseMenu 
                     InputManager.Instance.SwapInputMaps("Menu");
                     break;
+                case GameState.Dialogue:
+                    InputManager.Instance.SwapInputMaps("UI");
+                    break;
+                case GameState.EndGame:
+                    InputManager.Instance.SwapInputMaps("UI");
+                    currentCamera.SetActive(false);
+                    currentCamera = MoveCam.gameObject;
+                    currentCamera.SetActive(true);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
@@ -132,18 +161,22 @@ namespace PirateJam.Scripts
             //TODO: GAME COMPLETE SEQUENCE
 
             Debug.Log("GAME COMPLETE!");
-            TEMPwinscreen.SetActive(true);
-            SwapGameState(GameState.Pause);
+           // TEMPwinscreen.SetActive(true);
+            SwapGameState(GameState.EndGame);
+            mentor.Appear();
+            runner.StartDialogue("End");
             return true;
         }
 
         public void RunQuip(string node)
         {
             runner.StartDialogue(node);
+            StartDialogue();
         }
 
         public void RunExposition()
         {
+            mentor.Appear();
             runner.StartDialogue("Start");
         }
         

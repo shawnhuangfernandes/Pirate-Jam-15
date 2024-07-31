@@ -17,13 +17,11 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
         {
             foreach(LaunchableObject launchable in launchables)
             {
-                var dir = Quaternion.AngleAxis(launchable.launchAngle, origin.forward);
-                
                var launch = Instantiate(launchable.prefab, origin.position, origin.rotation, origin);
                var launchableRb = launch.GetComponent<Rigidbody>();
                RuntimeManager.PlayOneShot(launch.TryGetComponent(out DragonSpit ball) ? spitCast : fireCast);
 
-               launch.transform.Rotate(origin.up,90f);
+                launch.transform.Rotate(origin.up,90f);
                 launch.transform.Rotate(origin.right,launchable.launchAngle);
                
                launchableRb.velocity = launch.transform.forward * launchable.speed;

@@ -1,3 +1,4 @@
+using FMODUnity;
 using PirateJam.Scripts.ActionList;
 using TMPro;
 using UnityEngine;
@@ -8,13 +9,15 @@ namespace PirateJam.Scripts
     public class MentorReaction : MonoBehaviour
     {
         [SerializeField] private GameObject visuals;
-
+        [SerializeField] private ParticleSystem poofParticles;
         private InMemoryVariableStorage _storage;
+        [SerializeField] private FMODUnity.EventReference teleportNoise;
+        
         
         // Start is called before the first frame update
         void Start()
         {
-            
+            //GameManager.Instance.runner.AddCommandHandler("disappear",Disappear);
         }
 
         // Update is called once per frame
@@ -28,15 +31,20 @@ namespace PirateJam.Scripts
         public void Appear()
         {
             visuals.SetActive(true);
+            poofParticles.Play();
+            RuntimeManager.PlayOneShot(teleportNoise);
         }
 
         /// <summary>
         /// Called at the end of evaluating
         /// </summary>
+        [YarnCommand("disappear")]
         public void Disappear()
         {
             visuals.SetActive(false);
-            
+            poofParticles.Play();
+            RuntimeManager.PlayOneShot(teleportNoise);
+
         }
 
         /// <summary>
@@ -66,7 +74,6 @@ namespace PirateJam.Scripts
             GameManager.Instance.VariableStorage.SetValue("$grade", feedback);
 
 
-            ActionList.ActionList.Instance.AddAction(new DelegateAction(false, Disappear, 1, 2.5f));
         }
 
         /// <summary>

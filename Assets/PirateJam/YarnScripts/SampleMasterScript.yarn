@@ -1,8 +1,14 @@
 ﻿title: Start
 tags:
 ---
-Mentor: Heya! This is a test dialogue! YADADADADAD
+<<declare $tone = "disappointed">> 
+Mentor: You're quite young to be shadowing a master alchemist
+<<set $tone to "excited">>
+Mentor: ... Hope you can learn quickly!
+Mentor: No time to waste! Start at a workstation and let's see what you can do!
 <<declare $grade = "empty">> 
+<<end DialogueRunner>>
+<<disappear -MentorCentral->>
 ===
 title: Quip1
 tags:
@@ -13,21 +19,67 @@ Mentor: You're really getting the hang of that!
 title: Feedback0Good
 tags:
 ---
-MentorWS0: Nice work! 
+<<set $tone = "excited">>
+MentorWS0: This is plenty of dragon spit!
+MentorWS0: And high quality. too!
 MentorWS0: That's a {$grade} for you!
-
+<<end DialogueRunner>>
+<<disappear --MentorDD-->>
 ===
 title: Feedback0Pass
 tags:
 ---
-MentorWS0: Hmmm , good enough
+<<set $tone to "neutral">>
+MentorWS0: Hmmm , This is just enjough spit
 MentorWS0: {$grade}
-
+<<end DialogueRunner>>
+<<disappear --MentorDD-->>
 ===
 title: Feedback0Fail
 tags:
 ---
-MentorWS0: Erf, Try again
+<<set $tone = "disappointed">>
+MentorWS0: My buckets been rightly singed!
+MentorWS0: Avoid that next time :(
 MentorWS0: {$grade}
-
+<<end DialogueRunner>>
+<<disappear --MentorDD-->>
+===
+title: Feedback1Good
+tags:
+---
+<<set $tone = "excited">>
+MentorWS1: Huzzah! All my little monsters are well
+MentorWS1: I'll name the next one after you!
+MentorWS1: That's a {$grade} !
+<<end DialogueRunner>>
+<<disappear --MentorN-->>
+===
+title: Feedback1Pass
+tags:
+---
+<<set $tone = "neutral">>
+MentorWS1: All is in order
+MentorWS1: Pay some attention to what kind want the food
+MentorWS1: {$grade}
+<<end DialogueRunner>>
+<<disappear --MentorN-->>
+===
+title: Feedback1Fail
+tags:
+---
+<<set $tone = "disappointed">>
+MentorWS1: Oh dear
+MentorWS1: Do try again and pay attention to how much you have left
+MentorWS1: {$grade}
+<<end DialogueRunner>>
+<<disappear --MentorN-->>
+===
+title: End
+---
+<<set $tone to "excited">>
+Mentor: Wahoo! 
+Mentor: Hope you enjoyed your little tests
+Mentor: Keep that up and maybe you'll make minimum wage some day!
+Mentor: THANK YOU FOR PLAYING! REFRESH BROWSER TO PLAY AGAIN!
 ===
