@@ -161,9 +161,10 @@ namespace PirateJam.Scripts
             //TODO: GAME COMPLETE SEQUENCE
 
             Debug.Log("GAME COMPLETE!");
-           // TEMPwinscreen.SetActive(true);
+        
             SwapGameState(GameState.EndGame);
             mentor.Appear();
+            runner.Stop();
             runner.StartDialogue("End");
             return true;
         }

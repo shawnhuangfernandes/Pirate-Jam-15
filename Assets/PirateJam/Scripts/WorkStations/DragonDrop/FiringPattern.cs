@@ -22,7 +22,7 @@ namespace PirateJam.Scripts.WorkStations.DragonDrop
                RuntimeManager.PlayOneShot(launch.TryGetComponent(out DragonSpit ball) ? spitCast : fireCast);
 
                 launch.transform.Rotate(origin.up,90f);
-                launch.transform.Rotate(origin.right,launchable.launchAngle);
+                launch.transform.Rotate(origin.forward,launchable.launchAngle -90f);
                
                launchableRb.velocity = launch.transform.forward * launchable.speed;
             }

@@ -16,6 +16,8 @@ namespace PirateJam.Scripts.WorkStations
         [SerializeField] protected MentorReaction mentor;
         [SerializeField] protected FMODUnity.EventReference goodGrade, passGrade, failGrade;
 
+        [field: SerializeField] public int Score { get; protected set; } = 69;
+
         public class Grade
         {
             public string Cause;
@@ -34,10 +36,9 @@ namespace PirateJam.Scripts.WorkStations
         protected virtual void Start()
         {
             GameManager.Instance.workStations.Add(this);
-            Score = 70;
+            
         }
 
-        public int Score { get; protected set; } = 69;
 
         public virtual void Open()
         {
@@ -50,8 +51,7 @@ namespace PirateJam.Scripts.WorkStations
             _demerits.Clear();
             _achievements.Clear();
             mentor.Appear();
-
-            Score = 100;
+            Score = 69;
         }
 
         public virtual int AddDemerit(Grade demerit)
