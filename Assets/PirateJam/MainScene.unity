@@ -6328,6 +6328,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 1832329322}
+    - target: {fileID: 6123855021966343938, guid: e09418ac85d211f478a387d85588902c, type: 3}
+      propertyPath: m_Name
+      value: MentorN
+      objectReference: {fileID: 0}
     - target: {fileID: 8062115468203131723, guid: e09418ac85d211f478a387d85588902c, type: 3}
       propertyPath: m_Name
       value: --NurseryWorkstation--

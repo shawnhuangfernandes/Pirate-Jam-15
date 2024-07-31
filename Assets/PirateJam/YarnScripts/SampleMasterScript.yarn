@@ -53,7 +53,7 @@ MentorWS1: Huzzah! All my little monsters are well
 MentorWS1: I'll name the next one after you!
 MentorWS1: That's a {$grade} !
 <<end DialogueRunner>>
-<<disappear --MentorN-->>
+<<disappear MentorN>>
 ===
 title: Feedback1Pass
 tags:
@@ -63,7 +63,7 @@ MentorWS1: All is in order
 MentorWS1: Pay some attention to what kind want the food
 MentorWS1: {$grade}
 <<end DialogueRunner>>
-<<disappear --MentorN-->>
+<<disappear MentorN>>
 ===
 title: Feedback1Fail
 tags:
@@ -73,7 +73,7 @@ MentorWS1: Oh dear
 MentorWS1: Do try again and pay attention to how much you have left
 MentorWS1: {$grade}
 <<end DialogueRunner>>
-<<disappear --MentorN-->>
+<<disappear MentorN>>
 ===
 title: End
 ---

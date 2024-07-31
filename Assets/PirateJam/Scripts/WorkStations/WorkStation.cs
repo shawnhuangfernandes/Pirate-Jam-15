@@ -85,7 +85,7 @@ namespace PirateJam.Scripts.WorkStations
             ActionList.ActionList.Instance.AddAction(new DelegateAction<float>(true, mentor.GiveGrade, grade, 1,
                 0.5f));
 
-            ActionList.ActionList.Instance.AddAction(new DelegateAction<string>(true, GameManager.Instance.RunQuip,
+            ActionList.ActionList.Instance.AddAction(new DelegateAction<string>(false, GameManager.Instance.RunQuip,
                 "Feedback" + WorkStationNumber + status));
             ActionList.ActionList.Instance.AddAction(
                 new DelegateAction<EventReference>(true, PlayClip, clip, 1, 1f));

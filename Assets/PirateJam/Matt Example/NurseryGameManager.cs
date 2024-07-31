@@ -55,6 +55,8 @@ public class NurseryGameManager : WorkStation
         isOpen = true;
         RuntimeManager.PlayOneShot(animalNoiseStart);
         StartCoroutine(SpawnCreaturesSequentially());
+        FoodText.text = "Click & Drag";
+        QueueText.text = "Feed Sparkling Critters";
     }
 
     private void Update()
@@ -88,6 +90,7 @@ public class NurseryGameManager : WorkStation
 
         RemainingFood = TotalCreatures + 3;
         GenerateFeedingQueue();
+
     }
 
     private void GenerateFeedingQueue()

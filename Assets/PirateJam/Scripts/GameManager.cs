@@ -171,6 +171,7 @@ namespace PirateJam.Scripts
 
         public void RunQuip(string node)
         {
+            if (runner.IsDialogueRunning) return;
             runner.StartDialogue(node);
             StartDialogue();
         }
